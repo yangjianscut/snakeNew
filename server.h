@@ -27,7 +27,7 @@ class server : public QWidget
 public:
     explicit server(QWidget *parent = nullptr);
     ~server();
-    void timeout();
+
 
 private:
     Ui::server *ui;
@@ -50,6 +50,7 @@ private slots:
     void send(QString );
     void Dcode(QString);
     void conn();
+    void timeout();
 };
 
 #endif // SERVER_H

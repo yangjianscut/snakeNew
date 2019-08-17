@@ -3,7 +3,7 @@
 
 server::server(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::server)
+    ui(new Ui::server),player1(10,5),player2(17,10)
 {
     ui->setupUi(this);
     mServer=new QTcpServer(this);
@@ -15,6 +15,7 @@ server::server(QWidget *parent) :
     speed=1000;
     Timer= new QTimer(this);
     connect(Timer,SIGNAL(timeout()),this,SLOT(timeout()));
+        //qDebug()<<"yes";
     srand(time(0));
     updatebad();
     updategood();
