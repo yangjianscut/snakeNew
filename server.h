@@ -15,6 +15,7 @@
 #include <QMessageBox>
 #include <QKeyEvent>
 #include <cstdlib>
+#include <QHostInfo>
 
 namespace Ui {
 class server;
@@ -51,6 +52,7 @@ private slots:
     void Dcode(QString);
     void conn();
     void timeout();
+    void on_startbtn_clicked();
 };
 
 #endif // SERVER_H

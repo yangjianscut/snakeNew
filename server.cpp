@@ -6,6 +6,32 @@ server::server(QWidget *parent) :
     ui(new Ui::server),player1(10,5),player2(17,10)
 {
     ui->setupUi(this);
+    QString localHostName = QHostInfo::localHostName();
+    //qDebug() <<"localHostName: "<<localHostName;
+
+    QHostInfo info = QHostInfo::fromName(localHostName);
+    //qDebug() <<"IP Address: "<<info.addresses();
+
+    foreach(QHostAddress address,info.addresses())
+    {
+
+         if(address.protocol() == QAbstractSocket::IPv4Protocol)
+         {
+             qDebug() << address.toString();
+             ui->edip->setText(address.toString());
+         }
+    }
+
+
+}
+
+server::~server()
+{
+    delete ui;
+}
+
+void server::on_startbtn_clicked()
+{
     mServer=new QTcpServer(this);
     //connect(mServer,&QTcpServer::newConnection,this,&server::conn);
     connect(mServer, SIGNAL(newConnection()), this, SLOT(conn()));
@@ -22,12 +48,6 @@ server::server(QWidget *parent) :
     score1=0;
     score2=0;
     ui->score->setText("1号："+QString::number(score1)+"分 2号："+QString::number(score2)+"分");
-
-}
-
-server::~server()
-{
-    delete ui;
 }
 
 void server::conn()
@@ -117,14 +137,14 @@ void server::paintEvent(QPaintEvent*)
     for(int i = 0; i<player1.getlength(); i++)
     {
         paint.fillRect(QRect(player1.list[i].x()*15,player1.list[i].y()*15,15,15),Qt::red);
-        qDebug()<<player1.list[i].x()<<","<<player1.list[i].y()<<endl;
+        //qDebug()<<player1.list[i].x()<<","<<player1.list[i].y()<<endl;
 
     }
 
     for(int i = 0; i<player2.getlength(); i++)
     {
         paint.fillRect(QRect(player2.list[i].x()*15,player2.list[i].y()*15,15,15),Qt::blue);
-        qDebug()<<player2.list[i].x()<<","<<player2.list[i].y()<<endl;
+        //qDebug()<<player2.list[i].x()<<","<<player2.list[i].y()<<endl;
 
     }
 
