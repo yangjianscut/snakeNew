@@ -33,7 +33,6 @@ server::~server()
 void server::on_startbtn_clicked()
 {
     mServer=new QTcpServer(this);
-    //connect(mServer,&QTcpServer::newConnection,this,&server::conn);
     connect(mServer, SIGNAL(newConnection()), this, SLOT(conn()));
     mServer->listen(QHostAddress::Any,225);
     this->setAttribute(Qt::WA_DeleteOnClose,1);
@@ -41,10 +40,12 @@ void server::on_startbtn_clicked()
     speed=1000;
     Timer= new QTimer(this);
     connect(Timer,SIGNAL(timeout()),this,SLOT(timeout()));
-        //qDebug()<<"yes";
+
     srand(time(0));
-    updatebad();
-    updategood();
+    goodfood=QPoint(2,4);
+    badfood=QPoint(4,5);
+    repaint();
+    //qDebug()<<"yes";
     score1=0;
     score2=0;
     ui->score->setText("1号："+QString::number(score1)+"分 2号："+QString::number(score2)+"分");
@@ -54,6 +55,7 @@ void server::conn()
 {
     mSocket=mServer->nextPendingConnection();
     connect(mSocket,&QTcpSocket::readyRead,this,&server::ReadData);
+    QMessageBox::about(this, "连接成功", "player2进入游戏");
 }
 void server::new_client()
 {
@@ -73,7 +75,11 @@ void server::Dcode(QString str)
 {
     qDebug()<<str;
     QString type=str.mid(0,2);
-    if(type=="00") Timer->start(speed);
+    if(type=="00")
+    {
+        Timer->start(speed);
+        send("00");
+    }
     if(type=="01")
     {
         int tmp=str.mid(2,1).toInt();

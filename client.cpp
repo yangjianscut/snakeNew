@@ -20,7 +20,8 @@ void client::on_startbtn_clicked()
     else qDebug()<<"连接失败";
     speed=1000;
     Timer= new QTimer(this);
-    //Timer->start(speed);
+    goodfood=QPoint(2,4);
+    badfood=QPoint(4,5);
     QObject::connect(Timer,SIGNAL(timeout()),this,SLOT(timeout()));
     score1=0;
     score2=0;
