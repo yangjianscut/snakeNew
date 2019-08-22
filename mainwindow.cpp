@@ -19,21 +19,32 @@ MainWindow::MainWindow(QWidget *parent) :
     //returnbtn->setIconSize(QSize(20,20));
     //returnbtn->move(450,400);
 
+    //连接单人
     connect(ui->singlegamebtn,SIGNAL(clicked()),this,SLOT(singleslot()));
+
+    //连接双人
     connect(ui->doublegamebtn,SIGNAL(clicked()), this, SLOT(doubleslot()));
+
+    //连接服务器端
     connect(ui->webgameclientbtn,SIGNAL(clicked()), this, SLOT(webclientslot()));
+
+    //连接客户端
     connect(ui->webgameserverbtn,SIGNAL(clicked()), this, SLOT(webserverslot()));
+
+    //连接结束按钮
     connect(ui->exitbtn,SIGNAL(clicked()), this, SLOT(exitslot()));
     //box->move(20,20);
 
 }
 
+//单人
 void  MainWindow::singleslot()
 {
     box= new gamebox();
     box->show();
 }
 
+//结束
 void MainWindow::exitslot()
 {
     if(QMessageBox::question(this, "exit", "exit?", QMessageBox::Yes|QMessageBox::No) == QMessageBox::Yes)
@@ -43,18 +54,21 @@ void MainWindow::exitslot()
         }
 }
 
+//双人
 void  MainWindow::doubleslot()
 {
     doublebox= new doublegame;
     doublebox->show();
 }
 
+//客户端
 void  MainWindow::webclientslot()
 {
     mclient=new client;
     mclient->show();
 }
 
+//服务器端
 void  MainWindow::webserverslot()
 {
     mserver=new server;

@@ -26,6 +26,7 @@ public:
 
 public slots:
     void timeout();//时间结束时进行操作
+    void on_startbtn_clicked();//按压开始按钮
 
 private:
     Ui::doublegame *ui;

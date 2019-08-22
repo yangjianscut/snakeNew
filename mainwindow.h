@@ -26,18 +26,19 @@ public:
 private:
     Ui::MainWindow *ui;
     QPushButton* startbtn;
-    QPushButton* returnbtn;
-    gamebox* box;
-    client* mclient;
-    server* mserver;
-    doublegame* doublebox;
+    QPushButton* returnbtn;//结束按钮
+    gamebox* box;//单人游戏
+    client* mclient;//客户端
+    server* mserver;//服务器端
+    doublegame* doublebox;//双人游戏
+
 public slots:
-    void singleslot();
-    void doubleslot();
-    void exitslot();
-    void webserverslot();
-    void webclientslot();
-    void paintEvent(QPaintEvent *);
+    void singleslot();//单人
+    void doubleslot();//双人
+    void exitslot();//结束按钮
+    void webserverslot();//服务器
+    void webclientslot();//客户端
+    void paintEvent(QPaintEvent *);//绘图组件
 };
 
 #endif // MAINWINDOW_H

@@ -26,6 +26,7 @@ public:
 
 public slots:
     void timeout();
+    void on_startbtn_clicked();//按压开始按钮
 
 private:
     Ui::gamebox *ui;
@@ -33,11 +34,11 @@ private:
     QTimer* Timer;//计时器
     void keyPressEvent(QKeyEvent* event);
     snake player;//玩家
-    int setDiretion;
+    int setDiretion;//方向
     QPoint goodfood, badfood;//好果子坏果子
-    void updategood();
-    void updatebad();
-    bool eatself();
+    void updategood();//更新好果子
+    void updatebad();//更新坏果子
+    bool eatself();//判断有没有吃到自己
     int score,speed;//分数、速度
 };
 
