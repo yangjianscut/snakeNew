@@ -36,3 +36,14 @@ player1对应着服务器端，player2对应着客户端
 黑色代表坏果子，吃到分数-1，蛇长度-1，若蛇长为1，则不-1
 ### 3）游戏终止
 当蛇头碰到自己的身体或另一玩家的身体或超出边线，游戏终止
+
+## 五、安装说明
+本游戏通过Qt windeployqt打包发布，v1.0版本release在github上:https://github.com/yangjianscut/snakeNew/releases
+
+## 六、文件说明
+mainwindow为主界面
+gamebox为单人游戏
+doublegame为双人游戏
+client为客户端
+server为服务器端
+snake为蛇
