@@ -14,6 +14,9 @@ void doublegame::on_startbtn_clicked()
 {
     //设定速度
     speed=ui->speed->text().toInt();
+    ui->speed->setFocusPolicy(Qt::NoFocus);
+    this->setFocus();
+
     //for(int i=1;i<=5;i++) player.eatplus();
     Timer= new QTimer(this);
     Timer->start(speed);
