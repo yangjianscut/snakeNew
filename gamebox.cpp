@@ -13,7 +13,7 @@ gamebox::gamebox(QWidget *parent) :
 void gamebox::on_startbtn_clicked()
 {
     //设定速度
-    speed=1000;
+    speed=ui->speed->text().toInt();
     //for(int i=1;i<=5;i++) player.eatplus();
     Timer= new QTimer(this);
 

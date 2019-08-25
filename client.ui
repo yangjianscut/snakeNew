@@ -34,9 +34,9 @@
   <widget class="QLabel" name="score">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>360</x>
      <y>130</y>
-     <width>72</width>
+     <width>131</width>
      <height>41</height>
     </rect>
    </property>

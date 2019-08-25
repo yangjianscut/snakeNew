@@ -13,7 +13,7 @@ doublegame::doublegame(QWidget *parent) :
 void doublegame::on_startbtn_clicked()
 {
     //设定速度
-    speed=1000;
+    speed=ui->speed->text().toInt();
     //for(int i=1;i<=5;i++) player.eatplus();
     Timer= new QTimer(this);
     Timer->start(speed);
